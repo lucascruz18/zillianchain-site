@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components"
 
 export default createGlobalStyle`
   * {
@@ -13,8 +13,8 @@ export default createGlobalStyle`
     color: #fff;
     padding: 0;
     margin: 0;
-    font-family: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    font-family: --apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif
   }
 
   #root {

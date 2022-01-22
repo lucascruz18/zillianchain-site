@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
 
-import {Container, LogoWrapper, Logo, NavItems, NavItemsText, LoginButton, LoginButtonText} from './styles'
+import {Container, LogoWrapper, Logo, NavItems, NavItemsText, LoginButton, LoginButtonText} from "./styles"
 
 export default function Header() {
   return (
