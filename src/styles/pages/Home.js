@@ -6,22 +6,24 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: center; */
   background: #000;
   width: 100%;
 `
 
 export const Main = styled.main`
   display: flex;
-  flex-direction: column;
   align-items: left;
   justify-content: center;
+  flex-direction: column;
   width: 60%;
+  margin-top: 150px;
 `;
 
 export const Title = styled.h1`
   font-size: 50px;
-  background-image: linear-gradient(135deg, #00B4DB 0px, #0083B0 100%);
+  background: -webkit-linear-gradient(left, #FC466B, #3F5EFB);
+  animation: gradient-animation 4s ease infinite;
   background-size: 100%;
   background-clip: text;
   -webkit-background-clip: text;
@@ -34,7 +36,7 @@ export const Title = styled.h1`
 `
 
 export const SubTitle = styled.p`
-  color: #f2f2f2;
+  color: #333;
   font-size: 18px;
   text-align: left;
 

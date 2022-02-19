@@ -4,18 +4,16 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
   height: 150px;
-  /* background-color: #fff;
-  background-color: rgba(255,255,255,0.1); */
 `;
 
 export const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  margin-left: 50px;
 `;
 
 export const Logo = styled.image`
@@ -23,13 +21,18 @@ export const Logo = styled.image`
   color: #fafafa;
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  transition: 0.3s;
+
+  :hover {
+    opacity: 0.50;
+  }
 `;
 
 export const NavItems = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100%;
 `;
 
 export const NavItemsText = styled.a`
@@ -39,7 +42,7 @@ export const NavItemsText = styled.a`
   text-decoration: none;
   cursor: pointer;
   transition: 0.5s;
-  margin: 15px;
+  margin: 20px;
 
   &:hover  {
     color: #333;
@@ -47,13 +50,20 @@ export const NavItemsText = styled.a`
 `;
 
 export const LoginButton = styled.button`
-  width: 115px;
+  width: 200px;
   height: 50px;
-  background: #1473E6;
+  background: -webkit-linear-gradient(left, #FC466B, #3F5EFB);
+  background-size: 200% 200%;
+  animation: gradient-animation 4s ease infinite;
   border-radius: 28px;
   border: 0;
-  margin-left: 80px;
+  margin-right: 50px;
   cursor: pointer;
+  transition: 0.5s;
+
+  :hover {
+    opacity: 0.90;
+  }
 `;
 
 export const LoginButtonText = styled.p`

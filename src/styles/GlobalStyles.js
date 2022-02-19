@@ -7,6 +7,10 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+  *:focus {
+    outline: 0;
+  }
+
   html,
   body {
     background: #121214;

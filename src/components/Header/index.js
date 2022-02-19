@@ -1,12 +1,16 @@
 import React from "react"
+import Link from 'next/link'
 
 import {Container, LogoWrapper, Logo, NavItems, NavItemsText, LoginButton, LoginButtonText} from "./styles"
 
-export default function Header() {
+export default function Header({ currentAccount, connectToWallet, askContractToMintNft }) {
   return (
     <Container>
+
       <LogoWrapper>
-        <Logo>ZILLIANCHAIN</Logo>
+        <Link href="/">
+          <Logo>ZILLIANCHAIN</Logo>
+        </Link>
       </LogoWrapper>
 
       <NavItems>
@@ -14,13 +18,28 @@ export default function Header() {
         <NavItemsText>Exchange</NavItemsText>
         <NavItemsText>Tutorials</NavItemsText>
         <NavItemsText>Wallets</NavItemsText>
-
-        <LoginButton>
-          <LoginButtonText>Login</LoginButtonText>
-        </LoginButton>
       </NavItems>
 
-      {/* <Donate>D</Donate> */}
+      {/* {currentAccount ? (
+        <LoginButton onClick={askContractToMintNft}>
+          <LoginButtonText>Mint NFT</LoginButtonText>
+        </LoginButton>
+      ) : (
+        <LoginButton onClick={connectToWallet}>
+          <LoginButtonText>Connect to Wallet</LoginButtonText>
+        </LoginButton>
+      )} */}
+      {currentAccount ? (
+        <LoginButton>
+          <Link href="/create">
+            <LoginButtonText>Mint NFT</LoginButtonText>
+          </Link>
+        </LoginButton>
+      ) : (
+        <LoginButton onClick={connectToWallet}>
+            <LoginButtonText>Connect to Wallet</LoginButtonText>
+        </LoginButton>
+      )}
 
     </Container>
   );

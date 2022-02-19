@@ -7,6 +7,8 @@ export const Container = styled.div`
   justify-content: space-between;
   width: 30%;
   margin-bottom: 10px;
+  /* position: absolute;
+  bottom: 0; */
 `;
 
 export const Social = styled.div`

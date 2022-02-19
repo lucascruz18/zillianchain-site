@@ -6,10 +6,11 @@ import myEpicNft from '../utils/MyEpicNft.json'
 
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import FileInput from "../components/FileInput"
 
-import {Container, Main, Title, SubTitle, Description} from "../styles/pages/home"
+import {Container, Main, Title, LabelInput, Input, TextArea, SubmitButton} from "../styles/pages/create"
 
-export default function Home() {
+export default function CreateNFT() {
   const [currentAccount, setCurrentAccount] = useState("")
 
   const CONTRACT_ADDRESS = "0xc7Bdf8559566722a734a4be3c8F8A05FcAbb4435";
@@ -142,8 +143,20 @@ export default function Home() {
       />
 
       <Main>
-        <Title>Em breve...</Title>
-        <SubTitle>BLOCKCHAIN SOLUTIONS</SubTitle>
+        <Title>Create New Item</Title>
+
+        <FileInput name="file_input" />
+
+        <LabelInput for="itemName">Name</LabelInput>
+        <Input id="itemName" name="itemName" placeholder="Item name" />
+
+        <LabelInput for="externalLink">External link</LabelInput>
+        <Input id="externalLink" name="externalLink" placeholder="External link" />
+
+        <LabelInput for="description">Description</LabelInput>
+        <TextArea id="description" name="description" placeholder="Description" />
+
+        <SubmitButton>Create</SubmitButton>
       </Main>
 
       {/* <Footer /> */}
