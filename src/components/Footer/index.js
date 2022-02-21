@@ -1,8 +1,8 @@
-import React from "react"
+import React from 'react';
 
 // import { FaLinkedin, FaGithub } from "react-icons/fa";
 
-import {Container, SocialText, SocialButton} from "./styles"
+import { Container, SocialText, SocialButton } from './styles';
 
 export default function Footer() {
   return (

@@ -1,9 +1,13 @@
-import React from "react"
-import Link from 'next/link'
+import React from 'react';
+import Link from 'next/link';
 
-import {Container, LogoWrapper, Logo, NavItems, NavItemsText, LoginButton, LoginButtonText} from "./styles"
+import {
+  Container, LogoWrapper, Logo, NavItems, NavItemsText, LoginButton, LoginButtonText,
+} from './styles';
 
-export default function Header({ currentAccount, connectToWallet, askContractToMintNft }) {
+export default function Header({
+  currentAccount, connectToWallet, askContractToMintNft, loading,
+}) {
   return (
     <Container>
 
@@ -14,22 +18,21 @@ export default function Header({ currentAccount, connectToWallet, askContractToM
       </LogoWrapper>
 
       <NavItems>
+        <NavItemsText>Explore</NavItemsText>
         <NavItemsText>Market</NavItemsText>
         <NavItemsText>Exchange</NavItemsText>
-        <NavItemsText>Tutorials</NavItemsText>
-        <NavItemsText>Wallets</NavItemsText>
       </NavItems>
 
-      {/* {currentAccount ? (
+      {currentAccount ? (
         <LoginButton onClick={askContractToMintNft}>
-          <LoginButtonText>Mint NFT</LoginButtonText>
+          <LoginButtonText>{loading ? 'Minting' : 'Mint NFT'}</LoginButtonText>
         </LoginButton>
       ) : (
         <LoginButton onClick={connectToWallet}>
           <LoginButtonText>Connect to Wallet</LoginButtonText>
         </LoginButton>
-      )} */}
-      {currentAccount ? (
+      )}
+      {/* {currentAccount ? (
         <LoginButton>
           <Link href="/create">
             <LoginButtonText>Mint NFT</LoginButtonText>
@@ -39,7 +42,7 @@ export default function Header({ currentAccount, connectToWallet, askContractToM
         <LoginButton onClick={connectToWallet}>
             <LoginButtonText>Connect to Wallet</LoginButtonText>
         </LoginButton>
-      )}
+      )} */}
 
     </Container>
   );

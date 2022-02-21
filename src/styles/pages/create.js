@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
 export const Container = styled.div`
   flex: 1;
@@ -9,7 +9,7 @@ export const Container = styled.div`
   /* justify-content: center; */
   background: #000;
   width: 100%;
-`
+`;
 
 export const Main = styled.main`
   display: flex;
@@ -33,7 +33,7 @@ export const Title = styled.h1`
   -webkit-box-decoration-break: clone;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-`
+`;
 
 export const LabelInput = styled.label`
   color: #8f9ba8;
@@ -84,7 +84,6 @@ export const SubmitButton = styled.button`
   background-size: 200% 200%;
   animation: gradient-animation 4s ease infinite;
   border: 0;
-  margin-right: 50px;
   cursor: pointer;
   transition: 0.5s;
   border-radius: 8px;
@@ -92,6 +91,7 @@ export const SubmitButton = styled.button`
   font-family: Arial, Helvetica, sans-serif;
   color: #fafafa;
   font-weight: bold;
+  margin-bottom: 50px;
 
   :hover {
     opacity: 0.80;
