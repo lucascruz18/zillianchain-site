@@ -20,7 +20,7 @@ import {
   // SpecialNFTTitle,
   // SpecialNFTWrapper,
   // SpecialNFTItem,
-} from './home.styles';
+} from '../styles/pages/home';
 
 export default function Home() {
   const [currentAccount, setCurrentAccount] = useState('');
