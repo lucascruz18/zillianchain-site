@@ -102,12 +102,12 @@ export const SpecialNFTWrapper = styled.div`
   margin-bottom: 50px;
 `;
 
-export const SpecialNFTItem = styled.img`
+export const SpecialNFTItem = styled.div`
   width: 300px;
   height: 500px;
-  background: #333;
+  /* background: #333; */
   margin: 20px;
-  border-radius: 12px;
+  border-radius: 8px;
   border: 1px solid #333;
   cursor: pointer;
   transition: 0.3s;

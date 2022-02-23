@@ -4,11 +4,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 30%;
   margin-bottom: 10px;
-  /* position: absolute;
-  bottom: 0; */
 `;
 
 export const Social = styled.div`
@@ -20,16 +18,27 @@ export const Social = styled.div`
 `;
 
 export const SocialText = styled.p`
-  color: #8f9ba8;
-  font-size: 12px;
-  text-align: left;
+  color: rgb(32, 129, 226);
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   margin-top: 15px;
   cursor: pointer;
   transition: 0.5s;
 
   &:hover  {
-    color: #333;
+    background: -webkit-linear-gradient(left, #FC466B, #3F5EFB);
+    animation: gradient-animation 4s ease infinite;
+    background-size: 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    -webkit-box-decoration-break: clone;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 `;
 

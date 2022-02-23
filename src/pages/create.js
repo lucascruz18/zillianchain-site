@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { ethers } from 'ethers';
@@ -7,36 +6,38 @@ import myEpicNft from '../utils/MyEpicNft.json';
 
 import Header from '../components/Header';
 // import Footer from '../components/Footer';
+import FileInput from '../components/FileInput';
 
 import {
   Container,
   Main,
-  MainWrapper,
-  FeaturedWrapper,
-  FeaturedImage,
   Title,
-  SubTitle,
-  ExploreButton,
-  // SpecialNFTTitle,
-  // SpecialNFTWrapper,
-  // SpecialNFTItem,
-} from '../styles/pages/home';
+  LabelInput,
+  Input,
+  TextArea,
+  SubmitButton,
+} from '../styles/pages/create';
 
-export default function Home() {
+export default function CreateNFT() {
   const [currentAccount, setCurrentAccount] = useState('');
-  const [loading, setLoading] = useState(false);
 
-  const CONTRACT_ADDRESS = '0xe545078846281A6D91887b5aE8067aaaB025E353';
+  const CONTRACT_ADDRESS = '0xc7Bdf8559566722a734a4be3c8F8A05FcAbb4435';
 
+  // Setup our listener.
   const setupEventListener = async () => {
+    // Most of this looks the same as our function askContractToMintNft
     try {
       const { ethereum } = window;
 
       if (ethereum) {
+        // Same stuff again
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
         const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, myEpicNft.abi, signer);
 
+        // THIS IS THE MAGIC SAUCE.
+        // This will essentially "capture" our event when our contract throws it.
+        // If you're familiar with webhooks, it's very similar to that!
         connectedContract.on('NewEpicNFTMinted', (from, tokenId) => {
           console.log(from, tokenId.toNumber());
           alert(`Hey there! We've minted your NFT and sent it to your wallet. It may be blank right now. It can take a max of 10 min to show up on OpenSea. Here's the link: https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}`);
@@ -51,6 +52,9 @@ export default function Home() {
     }
   };
 
+  /*
+  * Gotta make sure this is async.
+  */
   const checkIfWalletIsConnected = async () => {
     const { ethereum } = window;
 
@@ -60,8 +64,14 @@ export default function Home() {
     }
     console.log('We have the ethereum object', ethereum);
 
+    /*
+    * Check if we're authorized to access the user's wallet
+    */
     const accounts = await ethereum.request({ method: 'eth_accounts' });
 
+    /*
+    * User can have multiple authorized accounts, we grab the first one if its there!
+    */
     if (accounts.length !== 0) {
       const account = accounts[0];
       console.log('Found an authorized account:', account);
@@ -81,8 +91,14 @@ export default function Home() {
         return;
       }
 
+      /*
+      * Fancy method to request access to account.
+      */
       const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
 
+      /*
+      * Boom! This should print out public address once we authorize Metamask.
+      */
       console.log('Connected', accounts[0]);
       setCurrentAccount(accounts[0]);
     } catch (error) {
@@ -92,7 +108,6 @@ export default function Home() {
 
   const askContractToMintNft = async () => {
     try {
-      setLoading(true);
       const { ethereum } = window;
 
       if (ethereum) {
@@ -107,13 +122,10 @@ export default function Home() {
         await nftTxn.wait();
 
         console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${nftTxn.hash}`);
-        setLoading(false);
       } else {
         console.log("Ethereum object doesn't exist!");
-        setLoading(false);
       }
     } catch (error) {
-      setLoading(false);
       console.log(error);
     }
   };
@@ -133,28 +145,24 @@ export default function Home() {
         currentAccount={currentAccount}
         connectToWallet={connectWallet}
         askContractToMintNft={askContractToMintNft}
-        loading={loading}
       />
 
       <Main>
-        <MainWrapper>
-          <Title>Discover, collect, and sell extraordinary NFTs</Title>
-          <SubTitle>Zillianchain is the new NFT marketplace</SubTitle>
-          <ExploreButton><strong>Explore</strong></ExploreButton>
-        </MainWrapper>
+        <Title>Create New Item</Title>
 
-        <FeaturedWrapper>
-          <FeaturedImage src="https://i.pinimg.com/originals/57/5d/db/575ddb3262a4c842e1bcd293fe12291d.jpg" />
-        </FeaturedWrapper>
+        <FileInput name="file_input" />
+
+        <LabelInput for="itemName">Name</LabelInput>
+        <Input id="itemName" name="itemName" placeholder="Item name" />
+
+        <LabelInput for="externalLink">External link</LabelInput>
+        <Input id="externalLink" name="externalLink" placeholder="External link" />
+
+        <LabelInput for="description">Description</LabelInput>
+        <TextArea id="description" name="description" placeholder="Description" />
+
+        <SubmitButton>Create</SubmitButton>
       </Main>
-
-      {/* <SpecialNFTTitle>Special NFT's</SpecialNFTTitle>
-
-      <SpecialNFTWrapper>
-        <SpecialNFTItem />
-        <SpecialNFTItem />
-        <SpecialNFTItem />
-      </SpecialNFTWrapper> */}
 
       {/* <Footer /> */}
     </Container>

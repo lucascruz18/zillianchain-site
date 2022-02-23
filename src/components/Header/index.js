@@ -6,16 +6,19 @@ import {
 } from './styles';
 
 export default function Header({
-  currentAccount, connectToWallet, askContractToMintNft, loading,
+  currentAccount,
+  connectToWallet,
+  askContractToMintNft,
+  loading,
 }) {
   return (
     <Container>
 
-      <LogoWrapper>
-        <Link href="/">
+      <Link href="/">
+        <LogoWrapper>
           <Logo>ZILLIANCHAIN</Logo>
-        </Link>
-      </LogoWrapper>
+        </LogoWrapper>
+      </Link>
 
       <NavItems>
         <NavItemsText>Explore</NavItemsText>
@@ -32,18 +35,6 @@ export default function Header({
           <LoginButtonText>Connect to Wallet</LoginButtonText>
         </LoginButton>
       )}
-      {/* {currentAccount ? (
-        <LoginButton>
-          <Link href="/create">
-            <LoginButtonText>Mint NFT</LoginButtonText>
-          </Link>
-        </LoginButton>
-      ) : (
-        <LoginButton onClick={connectToWallet}>
-            <LoginButtonText>Connect to Wallet</LoginButtonText>
-        </LoginButton>
-      )} */}
-
     </Container>
   );
 }
